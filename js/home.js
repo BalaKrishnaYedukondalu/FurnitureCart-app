@@ -154,11 +154,9 @@ window.onload = function () {
 };
 
 function renderMainItems(dataSetRandom) {
-  // Create a row for the cards
   const row = document.createElement("div");
   row.className = "row mr-0";
 
-  // to remove old items from recomendation list
   if (document.getElementsByClassName("main")[0] !== undefined)
     document.getElementsByClassName("main")[0].remove();
 
@@ -166,10 +164,9 @@ function renderMainItems(dataSetRandom) {
   mainDiv.className = "main";
   document.querySelector(".render-main-content").appendChild(mainDiv);
 
-  // Iterate over the array and create cards
   dataSetRandom.forEach((cardData) => {
     const col = document.createElement("div");
-    col.className = "col-sm-4 mb-3 pr-0"; // Added margin bottom to space out the columns
+    col.className = "col-sm-4 mb-3 pr-0";
 
     const card = document.createElement("div");
     card.className = "card cardLarge";
@@ -217,7 +214,6 @@ function renderMainItems(dataSetRandom) {
     row.appendChild(col);
   });
 
-  // Append the row to the sidebar
   document.querySelector(".main").appendChild(row);
 }
 
@@ -250,15 +246,9 @@ function recommendedItems(filteredItems) {
     }
   });
 
-  // var recommendedResults = cardDataList.filter(
-  //   (o1) => !filteredTags.some((o2) => o1.tags.includes(o2.tags))
-  // );
-
-  // Create a row for the cards
   const row = document.createElement("div");
   row.className = "row mr-0";
 
-  // to remove old items from recomendation list
   if (document.getElementsByClassName("rec-div")[0] !== undefined)
     document.getElementsByClassName("rec-div")[0].remove();
 
@@ -267,11 +257,11 @@ function recommendedItems(filteredItems) {
   document.querySelector(".right-side-bar-main").appendChild(recDiv);
 
   var counter = 1;
-  // Iterate over the array and create cards
+
   recommendedResults.forEach((cardData) => {
     if (counter <= 4) {
       const col = document.createElement("div");
-      col.className = "col-sm-12 pr-0 noMar"; // Added margin bottom to space out the columns
+      col.className = "col-sm-12 pr-0 noMar";
 
       const card = document.createElement("div");
       card.className = "card cardSmall";
@@ -327,6 +317,30 @@ function recommendedItems(filteredItems) {
     }
     counter = counter + 1;
   });
-  // Append the row to the sidebar
+
   document.querySelector(".rec-div").appendChild(row);
 }
+
+function showClickItem(clickItem) {
+  console.log(clickItem);
+  let clickItemText = clickItem;
+  var results = cardDataList.filter((data) =>
+    data.title.toLowerCase().includes(clickItemText.toLowerCase())
+  );
+  console.log(clickItemText.toLowerCase());
+  console.log(results);
+  renderMainItems(results);
+  recommendedItems(results);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const listGroupItems = document.querySelectorAll(".list-group-item");
+
+  listGroupItems.forEach((item) => {
+    item.addEventListener("click", function (event) {
+      console.log("clicked on selector");
+      event.preventDefault();
+      showClickItem(this.textContent.trim());
+    });
+  });
+});
