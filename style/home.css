@@ -1,0 +1,138 @@
+#left-side-bar,
+#right-side-bar,
+#main-page {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
+}
+body {
+  background-color: #ddd;
+}
+#accordionExample {
+  width: 90%;
+  margin: 0 auto;
+}
+#accordion-top {
+  padding: 5% 0%;
+}
+.accordion-item {
+  margin-bottom: 15px;
+}
+.accordion-body {
+  padding: 5px;
+}
+.list-group-item {
+  border: none;
+  padding: 10px;
+}
+.fa-solid.fa-couch {
+  margin-right: 25px;
+}
+.accordion-button {
+  padding: 15px 10px;
+}
+.accordion {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+#left-side-bar {
+  /* position: fixed; */
+  height: 100%;
+  /* width: 25%; */
+}
+.header-h5 {
+  margin-left: 15px;
+  margin-bottom: 0px;
+  padding-top: 20px;
+}
+.empty-header {
+  height: 50px;
+  background-color: #fff;
+  margin: 15px;
+  border-radius: 10px;
+}
+.search-box input {
+  background-color: #ddd;
+  margin: 10px;
+}
+.search-box {
+  margin-right: 20px;
+}
+.cardLarge {
+  height: 360px;
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
+}
+.cardSmall {
+  border: none;
+  margin-bottom: 5px;
+}
+.cardLarge .card-img-top {
+  height: 145px;
+  width: 96%;
+  margin: 5px;
+}
+.mr-0 {
+  margin: 0;
+  margin-right: 10px;
+}
+.pr-0 {
+  padding-right: 0;
+}
+.width-100 {
+  width: 100%;
+}
+.pl-0 {
+  padding-left: 0;
+}
+cardLarge .card-price {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.has-search .form-control {
+  margin-right: 0 !important;
+  background-color: #ddd;
+  border-radius: 20px;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 50%;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+.ser-btn {
+  margin-top: 10px;
+  border-left: none;
+}
+.noMar {
+  margin: 0px;
+}
+
+.cardSmall .card-title {
+  position: absolute;
+  bottom: 10px;
+  left: 35%;
+  font-size: 12px;
+}
+.cardSmall .card-price {
+  position: absolute;
+  bottom: -15px;
+  left: 35%;
+  font-size: 12px;
+}
+.cardSmall .card-atc {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 10px;
+}
+.centerDiv {
+  text-align: center;
+  contain: layout;
+}
