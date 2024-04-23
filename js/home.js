@@ -1,11 +1,10 @@
-// Array of card data objects
 const cardDataList = [
   {
     imageUrl: "../images/tables/table1.jpg",
     title: "Table 1",
     description:
       "aesthetic conference chair,elegant plywood curvature shell design is",
-    price: "22.47",
+    price: "100.00",
     currency: "AED",
     tags: "tables",
   },
@@ -153,6 +152,27 @@ window.onload = function () {
   recommendedItems(dataSetRandom);
 };
 
+function setAttributes(el, attrs) {
+  for (var key in attrs) {
+    el.setAttribute(key, attrs[key]);
+  }
+}
+
+function showSearchItem() {
+  var searchItem = document.getElementById("searchInput");
+  var filteredResults = cardDataList.filter((data) => {
+    if (
+      data.title
+        .toLocaleLowerCase()
+        .includes(searchItem.value.toLocaleLowerCase())
+    ) {
+      return data;
+    }
+  });
+  renderMainItems(filteredResults);
+  recommendedItems(filteredResults);
+}
+
 function renderMainItems(dataSetRandom) {
   const row = document.createElement("div");
   row.className = "row mr-0";
@@ -196,20 +216,22 @@ function renderMainItems(dataSetRandom) {
     cardTags.className = "card-tag";
     cardTags.textContent = cardData.tags;
 
-    const cardButton = document.createElement("a");
-    cardButton.className = "btn btn-dark width-100";
-    cardButton.href = "#";
+    const cardButton = document.createElement("button");
+    cardButton.className = "btn btn-dark width-100 add-to-cart";
+    // cardButton.setAttribute("type", "button");
+    setAttributes(cardButton, {
+      "data-src": cardData.imageUrl,
+      "data-title": cardData.title,
+      "data-price": cardData.price,
+    });
     cardButton.textContent = "Add to Cart";
-
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
     cardBody.appendChild(cardPrice);
     cardBody.appendChild(cardTags);
     cardBody.appendChild(cardButton);
-
     card.appendChild(cardImg);
     card.appendChild(cardBody);
-
     col.appendChild(card);
     row.appendChild(col);
   });
@@ -217,19 +239,17 @@ function renderMainItems(dataSetRandom) {
   document.querySelector(".main").appendChild(row);
 }
 
-function showSearchItem() {
-  var searchItem = document.getElementById("searchInput");
-  var filteredResults = cardDataList.filter((data) => {
-    if (
-      data.title
-        .toLocaleLowerCase()
-        .includes(searchItem.value.toLocaleLowerCase())
-    ) {
-      return data;
-    }
-  });
-  renderMainItems(filteredResults);
-  recommendedItems(filteredResults);
+function showClickItem(clickItem) {
+  let clickItemText = clickItem;
+  var results = cardDataList.filter((data) =>
+    data.title.toLowerCase().includes(clickItemText.toLowerCase())
+  );
+  if (results.length == 0) {
+    alert(clickItemText + " :--- Is Not found ");
+  } else {
+    renderMainItems(results);
+    recommendedItems(results);
+  }
 }
 
 function recommendedItems(filteredItems) {
@@ -273,7 +293,7 @@ function recommendedItems(filteredItems) {
       cardCol4Img.className = "col-sm-4 g-0";
 
       const cardImg = document.createElement("img");
-      cardImg.className = "card-img-top img-fluid rounded";
+      cardImg.className = "card-img-top img-fluid rounded small-img";
       cardImg.src = cardData.imageUrl;
       cardImg.alt = "Card Image";
 
@@ -294,9 +314,13 @@ function recommendedItems(filteredItems) {
       const cardCol4BodyATC = document.createElement("div");
       cardCol4BodyATC.className = "col-sm-4 g-0";
 
-      const cardButton = document.createElement("a");
-      cardButton.className = "btn btn-dark card-atc";
-      cardButton.href = "#";
+      const cardButton = document.createElement("button");
+      cardButton.className = "btn btn-dark card-atc add-to-cart";
+      setAttributes(cardButton, {
+        "data-src": cardData.imageUrl,
+        "data-title": cardData.title,
+        "data-price": cardData.price,
+      });
       cardButton.textContent = "Add to Cart";
 
       cardCol4BodyPrice.appendChild(cardTitle);
@@ -321,24 +345,10 @@ function recommendedItems(filteredItems) {
   document.querySelector(".rec-div").appendChild(row);
 }
 
-function showClickItem(clickItem) {
-  console.log(clickItem);
-  let clickItemText = clickItem;
-  var results = cardDataList.filter((data) =>
-    data.title.toLowerCase().includes(clickItemText.toLowerCase())
-  );
-  console.log(clickItemText.toLowerCase());
-  console.log(results);
-  renderMainItems(results);
-  recommendedItems(results);
-}
-
 document.addEventListener("DOMContentLoaded", function () {
   const listGroupItems = document.querySelectorAll(".list-group-item");
-
   listGroupItems.forEach((item) => {
     item.addEventListener("click", function (event) {
-      console.log("clicked on selector");
       event.preventDefault();
       showClickItem(this.textContent.trim());
     });

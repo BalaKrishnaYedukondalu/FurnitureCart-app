@@ -5,10 +5,11 @@
   border-radius: 10px;
   box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
 }
+
 body {
   background-color: #ddd;
 }
-#accordionExample {
+#left-menu-accordion {
   width: 90%;
   margin: 0 auto;
 }
@@ -37,10 +38,13 @@ body {
   font-size: 16px;
 }
 #left-side-bar {
-  /* position: fixed; */
   height: 100%;
-  /* width: 25%; */
 }
+
+#right-side-bar {
+  height: 100%;
+}
+
 .header-h5 {
   margin-left: 15px;
   margin-bottom: 0px;
@@ -68,7 +72,7 @@ body {
   margin-bottom: 5px;
 }
 .cardLarge .card-img-top {
-  height: 145px;
+  height: 145px !important;
   width: 96%;
   margin: 5px;
 }
@@ -135,4 +139,40 @@ cardLarge .card-price {
 .centerDiv {
   text-align: center;
   contain: layout;
+  margin-left: -24px;
+  margin-bottom: 17px;
+  margin-right: 24px;
+}
+.small-img {
+  height: 70px;
+  width: 70px;
+}
+.marbtm15 {
+  margin-bottom: 15px;
+}
+
+.btnDel {
+  margin-left: 5px;
+  width: 25%;
+}
+
+.width80 {
+  width: 70%;
+}
+
+.card-actions {
+  margin-top: 10px;
+  display: flex;
+}
+.bill-span {
+  font-weight: bold;
+  margin-right: 150px;
+  margin-left: 20px;
+  padding: auto;
+}
+.sub-total-cart {
+  margin-left: -37px;
+}
+.add-to-cart {
+  margin-bottom: 20px;
 }
