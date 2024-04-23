@@ -245,7 +245,7 @@ function showClickItem(clickItem) {
     data.title.toLowerCase().includes(clickItemText.toLowerCase())
   );
   if (results.length == 0) {
-    alert(clickItemText + " :--- Is Not found ");
+    alert("sorry...!!! " + clickItemText + " item is not available");
   } else {
     renderMainItems(results);
     recommendedItems(results);

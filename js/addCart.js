@@ -20,6 +20,7 @@ var shoppingCart = (function () {
 
   var obj = {};
 
+
   obj.addItemToCart = function (name, price, count, src) {
     for (var item in cart) {
       if (cart[item].name === name) {
@@ -33,6 +34,9 @@ var shoppingCart = (function () {
     saveCart();
   };
 
+
+
+
   obj.setCountForItem = function (name, count) {
     for (var i in cart) {
       if (cart[i].name === name) {
@@ -41,6 +45,8 @@ var shoppingCart = (function () {
       }
     }
   };
+
+
 
   obj.removeItemFromCart = function (name) {
     for (var item in cart) {
@@ -54,6 +60,8 @@ var shoppingCart = (function () {
     }
     saveCart();
   };
+
+
 
   obj.removeItemFromCartAll = function (name) {
     for (var item in cart) {
@@ -73,6 +81,8 @@ var shoppingCart = (function () {
     return totalCount;
   };
 
+
+
   obj.totalCart = function () {
     var totalCart = 0;
     for (var item in cart) {
@@ -90,6 +100,8 @@ var shoppingCart = (function () {
     return Number(subTotalCart.toFixed(2));
   };
 
+
+
   obj.listCart = function () {
     var cartCopy = [];
     for (i in cart) {
@@ -105,6 +117,8 @@ var shoppingCart = (function () {
   };
   return obj;
 })();
+
+
 
 $(document).on("click", ".add-to-cart", function (event) {
   event.preventDefault();
@@ -224,20 +238,20 @@ $(document).on("click", ".delete-item", function (event) {
   displayCart();
 });
 
-// -1
+ 
 $(document).on("click", ".minus-item", function (event) {
   var name = $(this).data("name");
   shoppingCart.removeItemFromCart(name);
   displayCart();
 });
-// +1
+ 
 $(document).on("click", ".plus-item", function (event) {
   var name = $(this).data("name");
   shoppingCart.addItemToCart(name);
   displayCart();
 });
 
-// Item count input
+ 
 $(document).on("change", ".item-count", function (event) {
   var name = $(this).data("name");
   var count = Number($(this).val());
